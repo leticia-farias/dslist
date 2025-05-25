@@ -1,6 +1,7 @@
 package com.devsuperior.dslist.dto;
 
 import com.devsuperior.dslist.entities.Book;
+import com.devsuperior.dslist.projections.BookMinProjection;
 
 public class BookMinDTO {
 
@@ -19,6 +20,14 @@ public class BookMinDTO {
 		writer = entity.getWriter();
 		score = entity.getScore();
 		imgUrl = entity.getImgUrl();
+	}
+	
+	public BookMinDTO(BookMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		writer = projection.getWriter();
+		score = projection.getScore();
+		imgUrl = projection.getImgUrl();
 	}
 
 	public Long getId() {
