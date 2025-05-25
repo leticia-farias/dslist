@@ -17,27 +17,30 @@ public class Book {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
+	
 	@Column(name = "book_year") // customiza o nome da coluna pq year é uma palavra reservada do sql, ent pode dar problema se deixar
 	private Integer year;
 	private String writer;
 	private String publisher;
+	private Double score;
 	private String imgUrl;
-	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT") // para aceitar mais de 255 carcteres
 	private String longDescription;
 	
 	// Construtores
 	public Book() {
 	}
 
-	public Book(Long id, String title, Integer year, String writer, String publisher, String imgUrl,
-			String shortDescription, String longDescription) {
+	public Book(Long id, String title, Integer year, String writer, String publisher, Double score, String imgUrl,
+			String longDescription) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.writer = writer;
 		this.publisher = publisher;
+		this.score = score;
 		this.imgUrl = imgUrl;
-		this.shortDescription = shortDescription;
 		this.longDescription = longDescription;
 	}
 
@@ -82,20 +85,20 @@ public class Book {
 		this.publisher = publisher;
 	}
 
+	public Double getScore() {
+		return score;
+	}
+
+	public void setScore(Double score) {
+		this.score = score;
+	}
+
 	public String getImgUrl() {
 		return imgUrl;
 	}
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
-	}
-
-	public String getShortDescription() {
-		return shortDescription;
-	}
-
-	public void setShortDescription(String shortDescription) {
-		this.shortDescription = shortDescription;
 	}
 
 	public String getLongDescription() {
